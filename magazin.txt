@@ -1,0 +1,10 @@
+ Код php для magazine.php
+ 
+ <?php
+include 'admin/includes/db.php';
+
+$stmt = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC");
+$articles = $stmt->fetchAll();
+
+$articles_json = json_encode($articles, JSON_UNESCAPED_UNICODE);
+?>
