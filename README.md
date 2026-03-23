@@ -17,4 +17,4 @@
 SQL-файл находится в папке database/.
 
 ## Просмотр
-Открой файл index.html или GitHub Pages, если включена публикация.
+Открой файл index.html или GitHub Pages.
