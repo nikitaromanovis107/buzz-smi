@@ -1,0 +1,366 @@
+<!----<?php
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header('Location: login_form.php');
+    exit;
+}
+include 'includes/db.php';
+?> -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Админка</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 75rem; 
+  margin: 0 auto;
+  padding: 0 9rem;
+}
+
+
+.site-header {
+  background: #f8f8f8;
+  color: #000;
+  padding: 0.9375rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 9rem;
+  max-width: 87.5rem;
+  margin: 0 auto;
+}
+
+.logo a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.admin-logout {
+  background: #000;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.admin-logout:hover {
+  opacity: 0.9;
+}
+
+.admin-page {
+  padding: 3.75rem 0;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.0625rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.admin-section {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.875rem;
+  margin-bottom: 2.5rem;
+}
+
+.admin-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: #222;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.admin-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.admin-form textarea {
+  min-height: 12rem;
+  resize: vertical;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-delete {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-primary {
+  background: #000;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #333;
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #e0e0e0;
+}
+
+.btn-delete {
+  background: #ff6b6b;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #ff5252;
+}
+
+.subscribers-list {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 0.625rem;
+  background: #fafafa;
+  margin: 1rem 0;
+}
+
+.subscriber-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 0.95rem;
+}
+
+.subscriber-item:last-child {
+  border-bottom: none;
+}
+
+.subscribers-total {
+  margin-top: 1rem;
+  color: #666;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.articles-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.admin-article-card {
+  background: #fafafa;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #000;
+}
+
+.admin-article-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.article-meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.article-excerpt {
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.article-actions {
+  display: flex;
+  gap: 0.625rem;
+  margin-top: 1rem;
+}
+
+.site-footer {
+  background: #000;
+  color: white;
+  padding: 1.875rem 0;
+  margin-top: 3.75rem;
+}
+
+.footer-container {
+  max-width: 87.5rem;
+  margin: 0 auto;
+  padding: 0 9rem;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+@media (max-width: 64rem) { 
+  .container,
+  .header-container,
+  .footer-container {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 48rem) { 
+  .container,
+  .header-container,
+  .footer-container {
+    padding: 0 1.5rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-delete {
+    width: 100%;
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="../index.html">BUZZ</a>
+      </div>
+      <a href="logout.php" class="admin-logout">Выйти</a>
+    </div>
+  </header>
+
+  <main class="admin-page">
+    <div class="container">
+      <h1 class="page-title">АДМИН-ПАНЕЛЬ</h1>
+
+      <section class="admin-section">
+        <h2>Подписчики на рассылку</h2>
+       <!---- <?php
+        $filepath = __DIR__ . '/../subscribers.txt';
+        if (file_exists($filepath)) {
+            $emails = file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            if (!empty($emails)) {
+                echo '<div class="subscribers-list">';
+                foreach (array_reverse($emails) as $email) {
+                    echo '<div class="subscriber-item">' . htmlspecialchars($email) . '</div>';
+                }
+                echo '</div>';
+                echo '<p class="subscribers-total">Всего: ' . count($emails) . ' подписчиков</p>';
+            } else {
+                echo '<p>Нет подписчиков</p>';
+            }
+        } else {
+            echo '<p>Нет подписчиков</p>';
+        }
+        ?>-->
+      </section>
+
+      <section class="admin-section">
+        <h2>Добавить новую статью</h2>
+        <form method="POST" action="add_article.php" class="admin-form" enctype="multipart/form-data">
+          <input type="text" name="title" placeholder="Заголовок статьи" required>
+          <input type="text" name="category" placeholder="Категория (общество, культура и т.д.)" required>
+          <input type="text" name="author" placeholder="Автор" required>
+          <input type="text" name="excerpt" placeholder="Краткое описание (до 200 символов)" required>
+          <textarea name="full_text" placeholder="Полный текст статьи" required></textarea>
+          <input type="file" name="image" accept="image/*">
+          <button type="submit" class="btn-primary">СОХРАНИТЬ СТАТЬЮ</button>
+        </form>
+      </section>
+
+      <section class="admin-section">
+        <h2>Все статьи</h2>
+        <!----
+        <?php
+        $stmt = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC");
+        $articles = $stmt->fetchAll();
+        if ($articles): ?>
+          <div class="articles-grid">
+            <?php foreach ($articles as $article): ?>
+              <div class="admin-article-card">
+                <h3><?= htmlspecialchars($article['title']) ?></h3>
+                <p class="article-meta"><?= htmlspecialchars($article['category']) ?> · <?= htmlspecialchars($article['author']) ?></p>
+                <p class="article-excerpt"><?= htmlspecialchars(mb_substr($article['excerpt'], 0, 100)) ?>...</p>
+                <div class="article-actions">
+                  <a href="edit_article.php?id=<?= (int)$article['id'] ?>" class="btn-secondary">РЕДАКТИРОВАТЬ</a>
+                  <a href="delete_article.php?id=<?= (int)$article['id'] ?>" class="btn-delete" onclick="return confirm('Удалить статью?')">УДАЛИТЬ</a>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        <?php else: ?>
+          <p>Нет статей</p>
+        <?php endif; ?>-->
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

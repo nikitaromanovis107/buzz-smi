@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Городские Новости — Будьте в курсе всего</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">BUZZ</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                <li><a href="index.html">ГЛАВНАЯ</a></li>
+                <li><a href="magazine.html">СТАТЬИ</a></li>
+                <li><a href="podcast.html">ПОДКАСТЫ</a></li>
+                <li><a href="contacts.html">КОНТАКТЫ </a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <div class="contact-icon">📞</div>
+                <div class="contact-phone">+7 (999) 999-99-99</div>
+            </div>
+    </header>
+
+
+    <div class="container">
+<div class="news-ticker">
+  <div class="ticker-container">
+    <div class="ticker-content">
+      <span>Важные новости города</span>
+      <span>Новости культуры и событий</span>
+      <span>Последние политические события</span>
+      <span>Эксклюзивные интервью</span>
+      <span>Важные новости города</span> 
+    </div>
+  </div>
+</div>
+
+        <div class="hero-section">
+<div class="hero-title">
+  <h1 id="typewriter-title">НЕ ЗАКРЫВАЙТЕ</h1>
+  <h2 id="typewriter-title"> ГЛАЗА НА ПРАВДУ</h2>
+</div>
+            <div class="hero-description">
+                <p>Будьте в курсе всех важных событий вашего города.<br>
+                Мы рассказываем правду, которую другие предпочитают игнорировать.</p>
+                <div class="hero-meta">
+                    <span>Текст:<br> Никита Романов</span>
+                    <span>Дата:<br> 5 декабря 2025</span>
+                    <span>Время чтения:<br> 5 мин</span>
+                    <a href="contacts.html" class="btn-more">
+                        <span class="btn-text">ПОДРОБНЕЕ</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image"></div>
+
+
+<div class="main-content">
+  <div class="articles-column">
+    *Тут появлются статьи в php формате
+   <!----   <?php foreach ($latest_articles as $article): ?>
+      <article class="article-item">
+        <div class="article-thumbnail">
+          <img src="<?= htmlspecialchars($article['img'] ?? 'https://via.placeholder.com/150x150?text=Изображение') ?>" alt="<?= htmlspecialchars($article['title']) ?>">
+        </div>
+        <div class="article-info">
+          <h2 class="article-title"><?= htmlspecialchars($article['title']) ?></h2>
+          <p class="article-excerpt"><?= htmlspecialchars($article['excerpt']) ?></p>
+          <div class="article-meta">
+            <span>Текст: <?= htmlspecialchars($article['author']) ?></span>
+            <span>Дата: <?= date('j F Y', strtotime($article['created_at'])) ?></span>
+            <span>Чтение: 5 мин</span>
+          </div>
+          <span class="category-badge"><?= htmlspecialchars($article['category']) ?></span>
+        </div>
+      </article>
+       
+   <?php endforeach; ?> -->
+  </div>
+
+  <div class="sidebar">
+    <div class="magazine-section">
+      <h3>НОВОСТЬ ДНЯ</h3>
+      <div class="magazine-cover">
+        <div class="magazine-date">ДЕКАБРЬ 2025</div>
+      </div>
+      <button class="newsletter-button">ПОДРОБНЕЕ</button>
+    </div>
+
+    <div class="popular-section">
+      <h3>САМЫЕ ПОПУЛЯРНЫЕ</h3>
+      <ol class="popular-list">
+        <li class="popular-item">
+                             <span class="popular-rank">01</span>
+                            <div class="popular-title">
+                                    Кто накормит бездомных: кухня взаимопомощи
+                                    <div class="popular-author">Текст: Иван Петров</div>
+                                  </div>
+                                </li>
+                        <li class="popular-item">
+							 <span class="popular-rank">02</span>
+                            <div class="popular-title">
+                                В Рязани запустили завод по переработке пластика
+                                <div class="popular-author">Текст: Екатерина Морозова</div>
+                            </div>
+                        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+        <a href="magazine.php" class="all-articles-link">ЧИТАТЬ СТАТЬИ</a>
+    </div>
+
+    <div class="podcast-section">
+        <div class="podcast-header">
+            <h2>ПОДКАСТЫ</h2>
+            <a href="podcast.html" class="all-episodes-link">СЛУШАТЬ ЭПИЗОДЫ →</a>
+        </div>
+        <div class="podcast-grid">
+            <div class="podcast-card fade-in">
+                <div class="card-image">
+                    <img src="pytevoditel.png" alt="EP 05">
+                    <div class="overlay">
+                        <div class="overlay-text">
+                            <span>BUZZ</span>
+                            <span>PODCAST</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>Путеводитель: Рязань</h3>
+                    <div class="card-meta">
+                        <span>Дата: 30 августа 2023</span>
+                        <span>Длительность: 35 мин</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="podcast-card fade-in">
+                <div class="card-image">
+                    <img src="gribi.png" alt="EP 04">
+                    <div class="overlay">
+                        <div class="overlay-text">
+                            <span>BUZZ</span>
+                            <span>PODCAST</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>Рязанские грибы</h3>
+                    <div class="card-meta">
+                        <span>Дата: 18 октября 2025</span>
+                        <span>Длительность: 1 ч 41 мин</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="podcast-card fade-in">
+                <div class="card-image">
+                    <img src="skolkolet.png" alt="EP 03">
+                    <div class="overlay">
+                        <div class="overlay-text">
+                            <span>BUZZ</span>
+                            <span>PODCAST</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>Сколько лет Рязани?</h3>
+                    <div class="card-meta">
+                        <span>Дата: 29 октября 2025</span>
+                        <span>Длительность: 24 мин</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <section class="authors-section">
+        <div class="authors-container">
+            <div class="authors-header">
+                <h2>АВТОРЫ</h2>
+                <a href="404.html" class="all-authors-link">ВСЕ АВТОРЫ →</a>
+            </div>
+            <div class="authors-grid">
+                <div class="author-card fade-in">
+                    <div class="author-avatar">
+                        <img src="author 1.png" alt="Екатерина Морозова">
+                    </div>
+                    <div class="author-info">
+                        <h3>Екатерина Морозова</h3>
+                        <div class="author-meta">
+                            <span>Профессия: Актер</span>
+                            <span>Город: Рязань</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-card fade-in">
+                    <div class="author-avatar">
+                        <img src="author 3.png" alt="Мария Лебедева">
+                    </div>
+                    <div class="author-info">
+                        <h3>Мария Лебедева</h3>
+                        <div class="author-meta">
+                            <span>Профессия: Писатель</span>
+                            <span>Город: Рязань</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-card fade-in">
+                    <div class="author-avatar">
+                        <img src="author 2.png" alt="Алексей Волков">
+                    </div>
+                    <div class="author-info">
+                        <h3>Алексей Волков</h3>
+                        <div class="author-meta">
+                            <span>Профессия: Житель</span>
+                            <span>Город: Рязань</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-card fade-in">
+                    <div class="author-avatar">
+                        <img src="author 5.png" alt="Дмитрий Козлов">
+                    </div>
+                    <div class="author-info">
+                        <h3>Дмитрий Козлов</h3>
+                        <div class="author-meta">
+                            <span>Профессия: Писатель</span>
+                            <span>Город: Рязань</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-card fade-in">
+                    <div class="author-avatar">
+                        <img src="author 4.png" alt="Анна Сидорова">
+                    </div>
+                    <div class="author-info">
+                        <h3>Анна Сидорова</h3>
+                        <div class="author-meta">
+                            <span>Профессия: Актер</span>
+                            <span>Город: Рязань</span>
+                        </div>
+                    </div>
+                </div>
+
+            
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-newsletter">
+                    <h2>РАССЫЛКА НОВОСТЕЙ НА EMAIL</h2>
+                </div>
+                <div class="footer-signup">
+<form id="newsletterForm">
+  <input type="email" id="email" placeholder="Ваш email" required>
+  <button type="submit">ПОДПИСАТЬСЯ</button>
+</form>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>BUZZ MAGAZINE</h3>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="magazine.html">Статьи</a></li>
+                        <li><a href="podcast.html">Подкасты</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+						<li><a href="admin/dashboard.html">Админ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © Made by Nikita Romanov
+                </div>
+                <div class="social-icons">
+                    <a href="404.html"><img src="ri_instagram-line.png" alt="Instagram"></a>
+                    <a href="404.html"><img src="ri_twitter-fill.png" alt="Twitter"></a>
+                    <a href="404.html"><img src="ri_youtube-fill.png" alt="YouTube"></a>
+                    <a href="404.html"><img src="ri_rss-fill.png" alt="RSS"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+
+document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  if (!email) return;
+
+  const res = await fetch('/api/subscribe.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: 'email=' + encodeURIComponent(email)
+  });
+  const data = await res.json();
+
+  if (data.status === 'ok') {
+    alert('Спасибо!');
+    document.getElementById('email').value = '';
+  } else if (data.status === 'exists') {
+    alert('Уже подписаны!');
+  } else {
+    alert('Ошибка');
+  }
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('appear');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer.observe(el);
+});
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const ticker = document.querySelector('.ticker-wrapper');
+    if (ticker) {
+      const clone = ticker.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      ticker.parentNode.appendChild(clone);
+    }
+  });
+
+
+</script>
+    </body>
+</html>
+

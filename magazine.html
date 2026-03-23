@@ -1,0 +1,140 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Журнал — BUZZ </title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">BUZZ</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                <li><a href="index.html">ГЛАВНАЯ</a></li>
+                <li><a href="magazine.html">СТАТЬИ</a></li>
+                <li><a href="podcast.html">ПОДКАСТЫ</a></li>
+                <li><a href="contacts.html">КОНТАКТЫ </a></li>
+                </ul>
+            </nav>
+
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <div class="contact-icon">📞</div>
+                <div class="contact-phone">+7 (999) 999-99-99</div>
+            </div>
+    </header>
+
+    <section class="magazine-page">
+        <div class="magazine-header">
+            <h1>СТАТЬИ</h1>
+        </div>
+
+        <div class="magazine-grid" id="magazineGrid">
+        Статьи будут вставлены через JS, если файл будет php 
+        </div>
+
+        <div class="pagination" id="pagination">
+            <span id="pageInfo">Page 1 of 1</span>
+            <div class="page-buttons" id="pageButtons"></div>
+        </div>
+	</section>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>BUZZ MAGAZINE</h3>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="magazine.html">Статьи</a></li>
+                        <li><a href="podcast.html">Подкасты</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+						<li><a href="admin/dashboard.html">Админ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © Made by Nikita Romanov
+                </div>
+                <div class="social-icons">
+                    <a href="404.html"><img src="ri_instagram-line.png" alt="Instagram"></a>
+                    <a href="404.html"><img src="ri_twitter-fill.png" alt="Twitter"></a>
+                    <a href="404.html"><img src="ri_youtube-fill.png" alt="YouTube"></a>
+                    <a href="404.html"><img src="ri_rss-fill.png" alt="RSS"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+<script>
+  window.articles = <?= $articles_json ?>;
+
+  const allArticles = window.articles;
+
+  const articlesPerPage = 12;
+  let currentPage = 1;
+
+  const grid = document.getElementById('magazineGrid');
+  const pageInfo = document.getElementById('pageInfo');
+  const pageButtons = document.getElementById('pageButtons');
+
+  function render() {
+    const totalPages = Math.ceil(allArticles.length / articlesPerPage);
+    const start = (currentPage - 1) * articlesPerPage;
+    const pageArticles = allArticles.slice(start, start + articlesPerPage);
+
+    grid.innerHTML = pageArticles.map(article => {
+      const url = 'article.php?id=' + article.id;
+      const imgSrc = article.img || 'https://via.placeholder.com/300x200?text=Изображение+не+загружено';
+      return `
+        <article class="magazine-card" onclick="window.location='${url}'">
+          <div class="card-image">
+            <img src="${imgSrc}" alt="${article.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Ошибка+загрузки'; this.onerror=null;">
+            <span class="category-badge">${article.category.toUpperCase()}</span>
+          </div>
+          <div class="card-content">
+            <h2>${article.title}</h2>
+            <p>${article.excerpt}</p>
+            <div class="card-meta">
+              <span>Текст: ${article.author}</span>
+              <span>Дата: ${article.created_at.split(' ')[0]}</span>
+              <span>Чтение: 5 мин</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+    pageButtons.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+      btn.textContent = i;
+      btn.onclick = () => {
+        currentPage = i;
+        render();
+      };
+      pageButtons.appendChild(btn);
+    }
+  }
+
+  render();
+</script>
+</body>
+</html>
