@@ -1,0 +1,15 @@
+ Код php для index.php
+
+ <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+try {
+    include 'admin/includes/db.php';
+    $limit = 6;
+    $stmt = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC LIMIT $limit");
+    $latest_articles = $stmt->fetchAll();
+} catch (Exception $e) {
+    die("Ошибка: " . $e->getMessage());
+}
+?>
